@@ -6,3 +6,8 @@ from app.forms import RunForm
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/input')
+def input():
+    form = RunForm()
+    return render_template('input.html')
