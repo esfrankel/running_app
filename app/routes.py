@@ -7,13 +7,13 @@ from app.forms import RunForm
 def index():
     return render_template('index.html')
 
-@app.route('/input',methods=['GET','POST'])
+@app.route('/input', methods=['GET','POST'])
 def input():
     form = RunForm()
     if form.validate_on_submit():
-        return render_template('map.html', distance=form.distance.data, pace=form.pace.data)
+        return render_template('map.html', distance=form.distance.data, pace=form.pace.data, latitude=form.latitude.data, longitude=form.longitude.data)
     return render_template('input.html', form=form)
 
 @app.route('/map')
-def map(distance, pace):
-    return render_template('map.html',distance=distance, pace=pace)
+def map(distance, pace, latitude, longitude):
+    return render_template('map.html',distance=distance, pace=pace, latitude = latitude, longitude = longitude)
