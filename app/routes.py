@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template
+from flask import render_template, jsonify
 from app.forms import RunForm
 from app.scripts import find_coords, triangle_point
 import requests, random
@@ -23,10 +23,12 @@ def input():
         dir1 = gmaps.directions([form.latitude.data, form.longitude.data], generated_loc, mode="walking")
         dir2 = gmaps.directions(generated_loc, third_point, mode="walking")
         dir3 = gmaps.directions(third_point, [form.latitude.data, form.longitude.data], mode="walking")
-        print([form.latitude.data, form.longitude.data], generated_loc, third_point)
-        return
+        fin_list = [dir1[0]['legs'][0]['steps'][0]['start_location']]
+        for line in dir1[0]['legs'][0]['steps']:
+            fin_list.append(line['end_location'])
+        for line in dir2[0]['legs'][0]['steps']:
+            fin_list.append(line['end_location'])
+        for line in dir3[0]['legs'][0]['steps']:
+            fin_list.append(line['end_location'])
+        return jsonify(fin_list)
     return render_template('input.html', form=form)
-
-@app.route('/map')
-def map(distance, pace, latitude, longitude):
-    return render_template('map.html',distance = distance, pace = pace, latitude = latitude, longitude = longitude)
