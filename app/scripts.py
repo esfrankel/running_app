@@ -25,4 +25,4 @@ def find_coords(lat, long, rad, theta):
 def triangle_point(point1, point2, r, theta):
     x1 = point1[0]; y1 = point1[1]; x2 = point2[0]; y2 = point2[1];
     x3 = (x1+x2)/2; y3 = (y1+y2)/2;
-    return find_coords(x3, x2, r, theta + 90)
+    return find_coords(x3, y3, r, theta + 90)

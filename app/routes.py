@@ -18,7 +18,7 @@ def input():
         pair = find_coords(form.latitude.data, form.longitude.data, form.distance.data * 0.3 * 1609.34, theta)
         r = requests.get("http://api.geonames.org/findNearestIntersectionOSMJSON?lat="+str(pair[0])+"&lng="+str(pair[1])+"&username=efrankel")
         generated_loc = [float(r.json()['intersection']['lat']),float(r.json()['intersection']['lng'])]
-        third_point = triangle_point([form.latitude.data, form.longitude.data], generated_loc, form.distance.data * 0.4 * 1609.34, theta)
+        third_point = triangle_point([form.latitude.data, form.longitude.data], generated_loc, form.distance.data * 0.3 * 1609.34, theta)
         gmaps = googlemaps.Client(key='AIzaSyBEgWq5G822EXJIgfviFqJRf7vVE6_F5Lc')
         dir1 = gmaps.directions([form.latitude.data, form.longitude.data], generated_loc, mode="walking")
         dir2 = gmaps.directions(generated_loc, third_point, mode="walking")
