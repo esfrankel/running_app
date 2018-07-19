@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Run Data</h1>
+  <form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+      {{ form.distance.label }}<br>
+      {{ form.distance }}
+    </p>
+    <p>
+      {{ form.pace.label }}<br>
+      {{ form.pace }}
+    </p>
+    <p>
+      {{ form.latitude.label }}<br>
+      {{ form.latitude }}
+    </p>
+    <p>
+      {{ form.longitude.label }}<br>
+      {{ form.longitude }}
+    </p>
+    <p>{{ form.submit() }}</p>
+  </form>
+{% endblock %}
