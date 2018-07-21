@@ -21,6 +21,7 @@ def data():
     generated_loc = [float(r.json()['intersection']['lat']),float(r.json()['intersection']['lng'])]
     third_point = triangle_point([clat, clng], generated_loc, cdist * 0.3 * 1609.34, theta)
     gmaps = googlemaps.Client(key='AIzaSyBEgWq5G822EXJIgfviFqJRf7vVE6_F5Lc')
+    print([clat,clng], generated_loc, third_point)
     dir1 = gmaps.directions([clat, clng], generated_loc, mode="walking")
     dir2 = gmaps.directions(generated_loc, third_point, mode="walking")
     dir3 = gmaps.directions(third_point, [clat, clng], mode="walking")
