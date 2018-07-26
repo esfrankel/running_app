@@ -8,3 +8,14 @@ docs: related documentation files
 tests: unit tests
 airun: contains the application files
 run.py: runs the Flask application
+
+## getting_started
+
+Deploy to Heroku
+
+`$git push heroku master`
+
+start flask from heroku 
+
+``
+
